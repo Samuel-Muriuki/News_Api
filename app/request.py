@@ -4,8 +4,8 @@ from .models import Sources, Articles
 
 
 def configure_request(app):
-    global source_url, articles_url, api_key
-    source_url = app.config['NEWS_SOURCES_BASE_URL']
+    global sources_url, articles_url, api_key
+    sources_url = app.config['NEWS_SOURCES_BASE_URL']
     articles_url = app.config['ARTICLES_BASE_URL']
     api_key = app.config['NEWS_API_KEY']
 
@@ -14,7 +14,7 @@ def get_sources(category):
     '''
     Function to get json response for our url request
     '''
-    get_sources_url = source_url.format(category, api_key)
+    get_sources_url = sources_url.format(category, api_key)
     print(get_sources_url)
 
     with urllib.request.urlopen(get_sources_url) as url:
@@ -32,12 +32,12 @@ def get_sources(category):
 
 def process_sources(sources_list):
     '''
-        Function to process news sources results and turn them into a list of objects
-        Args:
-                sources_list: A list of dictionaries that contain sources details
-        Returns:
-                sources_results: A list of sources objects
-        '''
+    Function to process news sources results and turn them into a list of objects
+    Args:
+            sources_list: A list of dictionaries that contain sources details
+    Returns:
+            sources_results: A list of sources objects
+    '''
     sources_results = []
     for source_item in sources_list:
         id = source_item.get('id')
@@ -48,11 +48,10 @@ def process_sources(sources_list):
         language = source_item.get('language')
         country = source_item.get('country')
 
-        sources_object = Sources(
-            id, name, description, url, category, country, language)
+        sources_object = Sources(id, name, description, url, category, country, language)
         sources_results.append(sources_object)
 
-        return sources_results
+    return sources_results
 
 
 def get_articles(id):
