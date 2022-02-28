@@ -13,7 +13,7 @@
 angles==1.0.
 autopep8==1.6.0
 bondpy==0.1.11
-camera-calibration==1.16.0
+camera-calibration==0.2
 camera-calibration-parsers==1.12.0
 catkin==0.8.10
 click==8.0.4
