@@ -25,6 +25,7 @@ genlisp==0.4.18
 genmsg==0.5.16
 gennodejs==2.0.2
 genpy==0.6.15
+gunicorn==20.1.0
 image-geometry==1.16.0
 interactive-markers==1.12.0
 itsdangerous==2.1.0
