@@ -1,26 +1,13 @@
-from flask import Flask
-from flask_bootstrap import Bootstrap
-from config import config_options
+class Sources:
+    '''
+    Sources class to define Sources Objects
+    '''
 
-bootstrap = Bootstrap()
-
-
-def create_app(config_name):
-    
-    app = Flask(__name__)
-
-    # Creating the app configurations
-    app.config.from_object(config_options[config_name])
-
-    # Initializing flask extensions
-    bootstrap.init_app(app)
-    
-    # Registering the blueprint
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
-
-    # setting config
-    from .request import configure_request
-    configure_request(app)
-    
-    return app
+    def __init__(self,id,name,description,url,category,country,language):
+        self.id =id
+        self.name = name
+        self.description = description
+        self.url = url
+        self.category = category
+        self.country = country
+        self.language = language
