@@ -1,6 +1,6 @@
 import urllib.request
 import json
-from . import Sources, Articles
+from .models import Sources, Articles
 
 
 def configure_request(app):
